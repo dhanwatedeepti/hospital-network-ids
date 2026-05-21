@@ -1,0 +1,66 @@
+<div class="bg-slate-900/50 border border-cyan-500/20 rounded-xl p-6 backdrop-blur-sm mt-6">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold flex items-center gap-3">
+            <div class="p-2 bg-purple-500 rounded-lg text-white">
+                📊
+            </div>
+            Activity Logs
+            <span class="text-sm text-gray-400">(Recent 5)</span>
+        </h2>
+    </div>
+
+    <!-- TABLE -->
+    <div class="overflow-x-auto">
+        <table id="logsTable" class="w-full">
+            <thead>
+                <tr class="border-b border-slate-700 text-slate-300">
+                    <th class="text-left py-3 px-4">Action</th>
+                    <th class="text-left py-3 px-4">User</th>
+                    <th class="text-left py-3 px-4">Timestamp</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for log in logs %}
+                <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+
+                    <!-- ACTION -->
+                    <td class="py-3 px-4">
+                        <div class="flex items-center gap-3">
+
+                            {% if "Added" in log.action %}
+                                <span class="text-green-400">➕</span>
+                            {% elif "Updated" in log.action %}
+                                <span class="text-blue-400">✏️</span>
+                            {% elif "Blocked" in log.action %}
+                                <span class="text-red-400">🚫</span>
+                            {% else %}
+                                <span class="text-gray-400">📌</span>
+                            {% endif %}
+
+                            <span class="text-white">
+                                {{ log.action }}
+                            </span>
+                        </div>
+                    </td>
+
+                    <!-- USER -->
+                    <td class="py-3 px-4 text-gray-300">
+                        {{ log.user_id }}
+                    </td>
+
+                    <!-- TIME -->
+                    <td class="py-3 px-4 text-gray-400 text-sm">
+                        {{ log.timestamp }}
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

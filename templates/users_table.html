@@ -1,0 +1,74 @@
+<div class="bg-slate-900/50 border border-cyan-500/20 rounded-xl p-6 backdrop-blur-sm mt-6">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold flex items-center gap-3">
+            <div class="p-2 bg-blue-500 rounded-lg text-white">
+                👥
+            </div>
+            System Users
+        </h2>
+
+        <!-- <a href="/add_user"
+           class="flex items-center gap-2 px-4 py-2 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 rounded-lg border border-cyan-500/30">
+            ➕ Add User
+        </a> -->
+    </div>
+
+    <!-- TABLE -->
+    <div class="overflow-x-auto">
+        <table class="w-full">
+
+            <thead>
+                <tr class="border-b border-slate-700 text-slate-300">
+                    <th class="text-left py-3 px-4">User ID</th>
+                    <th class="text-left py-3 px-4">Username</th>
+                    <th class="text-left py-3 px-4">Role</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for user in users %}
+                <tr class="border-b border-slate-800 hover:bg-slate-800/50">
+
+                    <td class="py-3 px-4 text-slate-300">
+                        #{{ user.id }}
+                    </td>
+
+                    <td class="py-3 px-4 text-white font-medium">
+                        {{ user.username }}
+                    </td>
+
+                    <td class="py-3 px-4">
+
+                        {% if user.role == "admin" %}
+                        <span class="px-3 py-1 text-sm bg-red-500/10 text-red-400 border border-red-500/30 rounded-full">
+                            🛡️ Admin
+                        </span>
+
+                        {% elif user.role == "doctor" %}
+                        <span class="px-3 py-1 text-sm bg-blue-500/10 text-blue-400 border border-blue-500/30 rounded-full">
+                            🩺 Doctor
+                        </span>
+
+                        {% elif user.role == "reception" %}
+                        <span class="px-3 py-1 text-sm bg-green-500/10 text-green-400 border border-green-500/30 rounded-full">
+                            📋 Reception
+                        </span>
+
+                        {% else %}
+                        <span class="px-3 py-1 text-sm bg-gray-500/10 text-gray-400 border border-gray-500/30 rounded-full">
+                            {{ user.role }}
+                        </span>
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+</div>

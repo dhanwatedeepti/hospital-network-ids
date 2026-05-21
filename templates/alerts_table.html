@@ -1,0 +1,69 @@
+<div class="bg-slate-900/50 border border-cyan-500/20 rounded-xl p-6 backdrop-blur-sm mt-6">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold flex items-center gap-3">
+            <div class="p-2 bg-red-500 rounded-lg text-white">
+                🛡️
+            </div>
+            IDS Alerts
+
+            <!-- <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm border border-red-500/30">
+                Live
+            </span> -->
+        </h2>
+
+        <div class="text-sm text-slate-400">
+            Showing {{ alerts|length }} alerts
+        </div>
+    </div>
+
+    <!-- ALERT LIST -->
+    <div class="space-y-3 max-h-[600px] overflow-y-auto">
+
+        {% for alert in alerts %}
+        <div class="bg-slate-800/50 border-l-4
+            {% if alert.risk_level == 'Low' %} border-green-500
+            {% elif alert.risk_level == 'Medium' %} border-yellow-500
+            {% elif alert.risk_level == 'High' %} border-orange-500
+            {% else %} border-red-500 {% endif %}
+            border rounded-lg p-4">
+
+            <div class="flex items-center justify-between">
+
+                <div>
+                    <!-- ATTACK TYPE -->
+                    <div class="flex gap-3 items-center mb-2">
+                        <span class="font-semibold text-white">
+                            {{ alert.attack_type }}
+                        </span>
+
+                        <!-- RISK -->
+                        <span class="px-2 py-1 text-xs rounded 
+                            {% if alert.risk_level == 'Low' %} bg-green-500/20 text-green-400
+                            {% elif alert.risk_level == 'Medium' %} bg-yellow-500/20 text-yellow-400
+                            {% elif alert.risk_level == 'High' %} bg-orange-500/20 text-orange-400
+                            {% else %} bg-red-500/20 text-red-400 {% endif %}">
+                            {{ alert.risk_level }}
+                        </span>
+
+                        <!-- BLOCKED -->
+                        {% if alert.blocked %}
+                        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded">
+                            Blocked
+                        </span>
+                        {% endif %}
+                    </div>
+
+                    <!-- IP + TIME -->
+                    <div class="text-sm text-gray-400">
+                        {{ alert.ip_address }} • {{ alert.timestamp }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>

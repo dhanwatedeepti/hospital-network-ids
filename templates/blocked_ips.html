@@ -1,0 +1,39 @@
+<div class="bg-slate-900/50 border border-red-500/20 rounded-xl p-6 backdrop-blur-sm">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-bold flex items-center gap-2">
+            🚫 Blocked IPs
+        </h2>
+
+        <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm border border-red-500/30">
+            {{ blocked_ips|length }}
+        </span>
+    </div>
+
+    <!-- LIST -->
+    <div class="space-y-3 max-h-[400px] overflow-y-auto">
+
+        {% for ip in blocked_ips %}
+        <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4 hover:bg-slate-800/70 hover:border-red-500/30 transition">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+                    <p class="text-white font-medium">{{ ip.ip_address }}</p>
+                    <p class="text-sm text-gray-400">{{ ip.reason }}</p>
+                </div>
+
+                <a href="{{ url_for('admin.unblock_ip', ip=ip.ip_address) }}"
+                   class="px-3 py-1 bg-red-500/20 text-red-400 rounded-lg border border-red-500/30 hover:bg-red-500/30 transition">
+                    Unblock
+                </a>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>

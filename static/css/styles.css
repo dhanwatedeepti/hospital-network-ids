@@ -1,0 +1,539 @@
+/* ==================== */
+/* GLOBAL STYLES & RESET */
+/* ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #1a1a2e;
+    line-height: 1.6;
+}
+
+/* ==================== */
+/* LOGIN PAGE STYLES */
+/* ==================== */
+
+/* ENHANCEMENT: Added gradient overlay for better text readability and more modern look */
+.login-body {
+    background: linear-gradient(135deg, rgba(0, 30, 60, 0.85), rgba(0, 80, 120, 0.75)), 
+                url("../images/login-bg.jpg") no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    backdrop-filter: blur(0px);
+}
+
+/* Center container with flex */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+}
+
+/* Login box with modern glassmorphism effect */
+/* ENHANCEMENT: Added glass morphism, better shadows, smooth transitions */
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 40px 35px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2), 0 5px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.login-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.25);
+}
+
+.login-box h3 {
+    color: #0a2b3e;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.login-box h3:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #007bff, #00c6ff);
+    border-radius: 2px;
+}
+
+/* Login form inputs */
+.login-box .form-control {
+    border-radius: 12px;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.login-box .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    outline: none;
+}
+
+/* Login button */
+.login-box .btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.login-box .btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #003d80);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* Alert messages for login */
+.login-box .alert {
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    animation: slideIn 0.3s ease;
+}
+
+/* ==================== */
+/* DASHBOARD COMMON STYLES */
+/* ==================== */
+
+/* Main container padding and spacing */
+.container.mt-4 {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Dashboard header with flex layout */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.dashboard-header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb4d);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 3s infinite;
+}
+
+/* Logout button styling */
+.btn-logout {
+    background: linear-gradient(135deg, #dc3545, #b02a37);
+    border: none;
+    border-radius: 12px;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-logout:hover {
+    background: linear-gradient(135deg, #b02a37, #8b1e28);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(220, 53, 69, 0.3);
+    color: white;
+}
+
+/* Card styling for forms */
+.form-card, .dashboard-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-card:hover, .dashboard-card:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+}
+
+.form-card h4, .dashboard-card h4 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+}
+
+/* Form inputs styling */
+.form-control, input, textarea, select {
+    border-radius: 12px !important;
+    border: 1px solid #e2e8f0 !important;
+    padding: 10px 15px !important;
+    transition: all 0.3s ease !important;
+    font-size: 14px !important;
+}
+
+.form-control:focus, input:focus, textarea:focus, select:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1) !important;
+    outline: none !important;
+}
+
+/* Button styling */
+.btn-primary {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0056b3, #003d80);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #1e7e34, #155d27);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #b02a37);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+/* Table styling */
+.table {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 25px;
+}
+
+.table thead th {
+    background: linear-gradient(135deg, #2c3e50, #1a252f);
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 12px 15px;
+}
+
+.table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.01);
+}
+
+.table tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+    border-color: #eef2f6;
+}
+
+/* Alert badge styling */
+.alert {
+    border-radius: 12px;
+    border: none;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    animation: slideIn 0.3s ease;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #991b1b;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+    color: #065f46;
+    border-left: 4px solid #28a745;
+}
+
+.alert-warning {
+    background: linear-gradient(135deg, #fed7aa, #ffedd5);
+    color: #92400e;
+    border-left: 4px solid #ffc107;
+}
+
+/* ==================== */
+/* ANIMATIONS */
+/* ==================== */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ==================== */
+/* RESPONSIVE DESIGN */
+/* ==================== */
+@media (max-width: 768px) {
+    .dashboard-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dashboard-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .form-card, .dashboard-card {
+        padding: 15px;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+    
+    .table thead th, .table tbody td {
+        padding: 8px 10px;
+    }
+    
+    .login-box {
+        padding: 25px 20px;
+        margin: 15px;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* ==================== */
+/* ADMIN DASHBOARD SPECIFIC */
+/* ==================== */
+.text-danger h4 {
+    color: #dc3545 !important;
+}
+
+.table-dark {
+    background: #1a1a2e;
+    border-radius: 16px;
+}
+
+.table-dark thead th {
+    background: #16213e;
+    color: #fff;
+}
+
+/* Security alerts table */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* ==================== */
+/* DOCTOR DASHBOARD SPECIFIC */
+/* ==================== */
+textarea.form-control {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* ==================== */
+/* RECEPTION DASHBOARD SPECIFIC */
+/* ==================== */
+form .btn-primary, form .btn-success {
+    width: auto;
+    min-width: 150px;
+}
+
+/* ==================== */
+/* FLASH MESSAGE AUTO-HIDE (from main.js) */
+/* ==================== */
+.alert {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+/* ==================== */
+/* UTILITY CLASSES */
+/* ==================== */
+.text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.shadow-hover {
+    transition: all 0.3s ease;
+}
+
+.shadow-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* ==================== */
+/* DASHBOARD LAYOUT (ACTIVE) */
+/* ==================== */
+
+body {
+    background-color: #f4f6f9;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: #1e293b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    color: #cbd5e1;
+    margin: 10px 0;
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.sidebar .nav-link:hover {
+    background: #334155;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Cards */
+.card-box {
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.bg-blue { background: #3b82f6; }
+.bg-green { background: #10b981; }
+.bg-red { background: #ef4444; }
+.bg-yellow { background: #f59e0b; }
+
+/* ==================== */
+/* ORIGINAL STYLES PRESERVED */
+/* ==================== */
+/* Note: The original background style for login-body has been enhanced but functionality remains */
+/* The body background-color: red has been removed as it was interfering with design */
+/* All original class names and structure are maintained for compatibility */

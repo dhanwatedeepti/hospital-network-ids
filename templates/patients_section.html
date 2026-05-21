@@ -1,0 +1,76 @@
+<div class="bg-slate-900/50 border border-cyan-500/20 rounded-xl p-6 backdrop-blur-sm mt-6">
+
+    <!-- HEADER -->
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold flex items-center gap-3">
+            <div class="p-2 bg-green-500 rounded-lg text-white">
+                🏥
+            </div>
+            Patients Registry
+        </h2>
+    </div>
+
+    <!-- GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        {% for patient in patients %}
+        <div class="bg-slate-800/50 border border-slate-700/50 rounded-lg p-5 hover:bg-slate-800/70 hover:border-cyan-500/30 transition-all">
+
+            <!-- TOP -->
+            <div class="flex justify-between mb-4">
+                <div>
+                    <h3 class="font-semibold text-white">
+                        {{ patient.name }}
+                    </h3>
+                    <p class="text-sm text-gray-400">
+                        ID: #{{ patient.id }}
+                    </p>
+                </div>
+
+                <!-- ACTIONS
+                <div class="flex gap-2">
+                    <a href="/view_patient/{{ patient.id }}"
+                       class="p-2 hover:bg-slate-700/50 rounded">
+                        👁️
+                    </a>
+
+                    <a href="/edit_patient/{{ patient.id }}"
+                       class="p-2 hover:bg-slate-700/50 rounded">
+                        ✏️
+                    </a>
+                </div> -->
+            </div>
+
+            <!-- DETAILS -->
+            <div class="space-y-2 text-sm">
+
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Age</span>
+                    <span class="text-white">{{ patient.age }} years</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Gender</span>
+                    <span class="text-white">{{ patient.gender }}</span>
+                </div>
+
+                <div class="flex justify-between">
+                    <span class="text-gray-400">Contact</span>
+                    <span class="text-white">{{ patient.phone }}</span>
+                </div>
+
+                <div class="pt-2 border-t border-slate-700">
+                    <p class="text-xs text-gray-400">Medical History</p>
+                    <p class="text-sm text-white">
+                        {{  patient.medical_history }}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>

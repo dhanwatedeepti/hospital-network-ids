@@ -1,0 +1,32 @@
+2026-04-16 19:12:18,709 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-16 19:12:18,709 INFO: [33mPress CTRL+C to quit[0m
+2026-04-16 19:12:18,717 INFO:  * Restarting with stat
+2026-04-16 19:12:19,658 WARNING:  * Debugger is active!
+2026-04-16 19:12:19,666 INFO:  * Debugger PIN: 124-542-311
+2026-04-16 19:12:49,992 INFO: Request from 127.0.0.1 to /predict at 2026-04-16 19:12:49.992707
+2026-04-16 19:12:49,994 INFO: 127.0.0.1 - - [16/Apr/2026 19:12:49] "[33mPOST /predict HTTP/1.1[0m" 404 -
+2026-04-16 19:13:01,864 INFO: Request from 127.0.0.1 to / at 2026-04-16 19:13:01.864859
+2026-04-16 19:13:01,868 INFO: 127.0.0.1 - - [16/Apr/2026 19:13:01] "GET / HTTP/1.1" 200 -
+2026-04-16 19:13:01,965 INFO: Request from 127.0.0.1 to /favicon.ico at 2026-04-16 19:13:01.965002
+2026-04-16 19:13:01,965 INFO: 127.0.0.1 - - [16/Apr/2026 19:13:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-04-16 19:13:02,080 INFO: Request from 127.0.0.1 to /predict at 2026-04-16 19:13:02.080136
+2026-04-16 19:13:02,080 INFO: 127.0.0.1 - - [16/Apr/2026 19:13:02] "[33mPOST /predict HTTP/1.1[0m" 404 -
+2026-04-16 19:13:11,433 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-16 19:13:11,433 INFO: [33mPress CTRL+C to quit[0m
+2026-04-16 19:13:11,433 INFO:  * Restarting with stat
+2026-04-16 19:13:12,608 WARNING:  * Debugger is active!
+2026-04-16 19:13:12,613 INFO:  * Debugger PIN: 124-542-311
+2026-04-16 19:13:15,649 INFO: Request from 127.0.0.1 to /predict at 2026-04-16 19:13:15.649311
+2026-04-16 19:13:15,652 INFO: 127.0.0.1 - - [16/Apr/2026 19:13:15] "[33mPOST /predict HTTP/1.1[0m" 404 -
+2026-04-16 19:21:30,401 INFO: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2026-04-16 19:21:30,401 INFO: [33mPress CTRL+C to quit[0m
+2026-04-16 19:21:30,401 INFO:  * Restarting with stat
+2026-04-16 19:21:31,769 WARNING:  * Debugger is active!
+2026-04-16 19:21:31,769 INFO:  * Debugger PIN: 124-542-311
+2026-04-16 19:22:54,985 INFO: Request from 127.0.0.1 to /predict at 2026-04-16 19:22:54.985302
+2026-04-16 19:22:54,985 INFO: 127.0.0.1 - - [16/Apr/2026 19:22:54] "[33mPOST /predict HTTP/1.1[0m" 404 -
+2026-04-16 19:25:43,876 INFO:  * Detected change in 'D:\\hospital_ids_system\\app.py', reloading
+2026-04-16 19:25:44,025 INFO:  * Restarting with stat
