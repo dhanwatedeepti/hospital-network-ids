@@ -102,9 +102,9 @@ class IDS:
 
         print("🔍 FULL REQUEST:", full_request)
 
-        # -----------------------------
-        # SQL INJECTION DETECTION
-        # -----------------------------
+# -----------------------------
+# SQL INJECTION DETECTION
+# -----------------------------
         patterns = [
             " or ",
             "'or",
