@@ -2,6 +2,8 @@ from datetime import datetime, timezone
 from extension import db, login_manager
 from flask_login import UserMixin
 from datetime import datetime
+from zoneinfo import ZoneInfo
+
 
 # -----------------------------
 # 🔐 USER MODEL (AUTH SYSTEM)
@@ -31,8 +33,10 @@ class BlockedIP(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     ip_address = db.Column(db.String(50), unique=True)
     reason = db.Column(db.String(100))
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-
+    timestamp = db.Column(
+    db.DateTime,
+    default=lambda: datetime.now(ZoneInfo("Asia/Kolkata"))
+    )
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -100,7 +104,11 @@ class ActivityLog(db.Model):
     action = db.Column(db.String(255))
     ip_address = db.Column(db.String(50))
 
-    timestamp = db.Column(db.DateTime, default=db.func.current_timestamp())
+
+    timestamp = db.Column(
+    db.DateTime,
+    default=lambda: datetime.now(ZoneInfo("Asia/Kolkata"))
+    )
     user = db.relationship("User", backref="activities")
 
     def __repr__(self):
