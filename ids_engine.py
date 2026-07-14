@@ -48,10 +48,10 @@ class IDS:
         t for t in self.failed_logins[ip] if now - t < 60
     ]
 
-     print(f"🔐 Failed login attempts for {ip}: {len(self.failed_logins[ip])}")
+     print(f"Failed login attempts for {ip}: {len(self.failed_logins[ip])}")
 
      if len(self.failed_logins[ip]) >= 5:
-            print("🚨 BRUTE FORCE DETECTED")
+            print("BRUTE FORCE DETECTED")
 
             self.log_alert(ip, "Brute Force Attack", "High", "/login")
             self.save_blocked_ip(ip, "Brute Force Attack")
@@ -72,15 +72,15 @@ class IDS:
         endpoint = request.path
         now = time.time()
         
-        print(f"✅ IDS CHECK IP: {ip} ENDPOINT: {endpoint}")
-        print("📊 Requests for", ip, ":", len(self.request_log[ip]))
+        print(f"IDS CHECK IP: {ip} ENDPOINT: {endpoint}")
+        print("Requests for", ip, ":", len(self.request_log[ip]))
 
         # -----------------------------
         # SAFE ROUTES
         # -----------------------------
         safe_routes = ["/login", "/static"]
 
-        if any(endpoint.startswith(route) for route in safe_routes):
+        if endpoint == "/" or any(endpoint.startswith(route) for route in safe_routes):
             return None
 
         # -----------------------------
@@ -100,7 +100,7 @@ class IDS:
             request.url
         ).lower()
 
-        print("🔍 FULL REQUEST:", full_request)
+        print("FULL REQUEST:", full_request)
 
 # -----------------------------
 # SQL INJECTION DETECTION
@@ -119,7 +119,7 @@ class IDS:
         for p in patterns:
             if p in full_request:
 
-                print("⚠️ SQLi DETECTED:", p)
+                print("SQLi DETECTED:", p)
 
                 self.log_alert(ip, "SQL Injection", "High", endpoint)
                 self.save_blocked_ip(ip, "SQL Injection")
@@ -145,7 +145,7 @@ class IDS:
 
                 attack_type = "XSS Attack"
 
-                print("⚠️ XSS detected:", full_request)
+                print("XSS detected:", full_request)
 
                 self.log_alert(ip, attack_type, "High", endpoint)
                 self.save_blocked_ip(ip, attack_type)
@@ -162,7 +162,7 @@ class IDS:
         self.request_log[ip] = [t for t in self.request_log[ip] if now - t < 1]
 
         if len(self.request_log[ip]) > 10:
-           print("🚨 DoS DETECTED")
+           print("DoS DETECTED")
 
            attack_type = "DoS Attack"
 

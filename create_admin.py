@@ -43,4 +43,4 @@ with app.app_context():
     db.session.add_all([admin, doctor, reception])
     db.session.commit()
 
-    print("✅ Users created successfully")
+    print("Users created successfully")

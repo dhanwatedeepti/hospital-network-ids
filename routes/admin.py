@@ -73,6 +73,7 @@ def get_alerts():
     return jsonify(data)
 
 @admin_bp.route('/unblock_ip/<ip>')
+@login_required
 def unblock_ip(ip):
 
 
@@ -81,9 +82,9 @@ def unblock_ip(ip):
     if blocked:
         db.session.delete(blocked)
         db.session.commit()
-        print(f"✅ Unblocked IP: {ip}")
+        print(f"Unblocked IP: {ip}")
     else:
-        print(f"⚠️ IP not found: {ip}")
+        print(f"IP not found: {ip}")
 
     return redirect(url_for('admin.admin_home'))
 

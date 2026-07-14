@@ -70,9 +70,14 @@ async function loadAlerts() {
         const data = await response.json();
 
         const table = document.querySelector("#alertsTable tbody");
+        if (!table) {
+            return;
+        }
+
+        const alerts = Array.isArray(data) ? data : (data.alerts || []);
         table.innerHTML = "";
 
-        data.alerts.forEach(alert => {
+        alerts.forEach(alert => {
             const row = `
                 <tr>
                     <td>${alert.ip}</td>
@@ -80,7 +85,7 @@ async function loadAlerts() {
                     <td>${alert.risk}</td>
                     <td>${alert.time}</td>
                     <td>
-                    <a href="/unblock_ip/${alert.ip}" class="btn btn-warning btn-sm">
+                    <a href="/admin/unblock_ip/${encodeURIComponent(alert.ip)}" class="btn btn-warning btn-sm">
                     Unblock
                     </a>
                 </td>

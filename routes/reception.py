@@ -10,7 +10,6 @@ from flask import flash
 
 
 reception_bp = Blueprint('reception', __name__)
-log_activity("Added new patient")
 # -----------------------------
 # 🏥 RECEPTION DASHBOARD
 # -----------------------------
@@ -50,6 +49,7 @@ def add_patient():
 
     db.session.add(new_patient)
     db.session.commit()
+    log_activity("Added new patient")
 
     return redirect(url_for('reception.reception_home'))
 

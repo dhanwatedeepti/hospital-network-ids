@@ -12,6 +12,6 @@ with app.app_context():
     if blocked:
         db.session.delete(blocked)
         db.session.commit()
-        print(f"✅ IP {ip_to_unblock} unblocked successfully")
+        print(f"IP {ip_to_unblock} unblocked successfully")
     else:
-        print(f"⚠️ IP {ip_to_unblock} not found in blocked list")
+        print(f"IP {ip_to_unblock} not found in blocked list")
