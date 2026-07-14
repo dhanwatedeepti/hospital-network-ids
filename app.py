@@ -7,8 +7,6 @@ from routes.doctor import doctor_bp
 from routes.reception import reception_bp
 from ids_engine import IDS
 
-
-
 ids = IDS()
 
 def create_app():
