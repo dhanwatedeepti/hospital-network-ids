@@ -34,8 +34,9 @@ def create_app():
     def monitor_request():
         # print("🔥 BEFORE REQUEST TRIGGERED")  # DEBUG
 
-        result = app.ids.inspect_request(request)
-        if result:
+
+         result = app.ids.inspect_request(request)
+         if result:
              return result
     
     
